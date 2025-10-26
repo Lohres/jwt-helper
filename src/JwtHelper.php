@@ -1,6 +1,4 @@
-<?php
-
-declare(strict_types=1);
+<?php declare(strict_types=1);
 
 namespace Lohres\JwtHelper;
 
@@ -34,11 +32,29 @@ use Throwable;
  */
 class JwtHelper
 {
-    private const string APP_NAME = "appName";
-    private const string KEYS_PATH = "keysPath";
-    private array $config;
-    private ?Logger $logger;
+    public const string APP_NAME = "appName";
+    public const string KEYS_PATH = "keysPath";
+    private array $config {
+        get {
+            return $this->config;
+        }
+        set {
+            $this->config = $value;
+        }
+    }
+    private ?Logger $logger {
+        get {
+            return $this->logger;
+        }
+        set {
+            $this->logger = $value;
+        }
+    }
 
+    /**
+     * @param array $config
+     * @param Logger|null $logger
+     */
     public function __construct(array $config, ?Logger $logger = null)
     {
         $this->config = $config;
@@ -99,6 +115,7 @@ class JwtHelper
      */
     private function checkConfig(): void
     {
+        $this->logger?->debug(message: "check config");
         if (empty($this->config[self::APP_NAME]) || empty($this->config[self::KEYS_PATH])
         ) {
             throw new RuntimeException(message: "config for jwt invalid!");
