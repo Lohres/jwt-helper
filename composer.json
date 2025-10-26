@@ -1,0 +1,27 @@
+{
+  "name": "lohres/jwt-helper",
+  "description": "Helper class for JWT in lohres projects",
+  "type": "project",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Christian Lührs",
+      "email": "info@lohres-log.de"
+    }
+  ],
+  "require-dev": {
+    "roave/security-advisories": "dev-latest"
+  },
+  "require": {
+    "php": "^8.4",
+    "ext-json": "*",
+    "monolog/monolog": "^3.9.0",
+    "web-token/jwt-library": "^4.0",
+    "lcobucci/clock": "^3.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "Lohres\\JwtHelper\\": "src/"
+    }
+  }
+}
